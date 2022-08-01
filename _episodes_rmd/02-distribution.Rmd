@@ -14,8 +14,8 @@ source: Rmd
 ---
 
 ```{r, include = FALSE}
-#source("../bin/chunk-options.R")
-#knitr_fig_path("02-")
+source("../bin/chunk-options.R")
+knitr_fig_path("02-")
 library(tidyverse)
 library(palmerpenguins)
 ```
@@ -72,6 +72,7 @@ fig, ax = plt.subplots(figsize =(10, 7))
 ax.hist(a, bins = [0, 25, 50, 75, 100])
  
 # Show plot
+plot.imshow(fig)
 plt.show()
 
 ```
