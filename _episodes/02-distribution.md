@@ -56,18 +56,7 @@ library(reticulate)
 
 ```python
 from matplotlib import pyplot as plt
-```
-
-```
-## Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'matplotlib'
-```
-
-```python
 import numpy as np
-```
-
-```
-## Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'numpy'
 ```
 
 noget
@@ -80,38 +69,25 @@ a = np.array([22, 87, 5, 43, 56,
               27])
 ```
 
-```
-## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'np' is not defined
-```
-
 
 
 ```python
 # Creating histogram
 fig, ax = plt.subplots(figsize =(10, 7))
-```
-
-```
-## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-```
-
-```python
 ax.hist(a, bins = [0, 25, 50, 75, 100])
  
 # Show plot
 ```
 
 ```
-## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'ax' is not defined
+## (array([5., 3., 5., 2.]), array([  0,  25,  50,  75, 100]), <BarContainer object of 4 artists>)
 ```
 
 ```python
 plt.show()
 ```
 
-```
-## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-```
+![plot of chunk third](figure/third-1.png)
 
 
 ### What do we use them for?
@@ -151,7 +127,7 @@ ggplot(data, aes(x=body_mass_g)) +
 ## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-3.png)
 Built into the geom_histogram is the statistical transformation, that counts the 
 number of observations in each bin.
 
