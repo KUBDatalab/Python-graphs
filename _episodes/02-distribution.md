@@ -42,6 +42,7 @@ And plot it. It might look like this:
 ~~~
 library(reticulate)
 knitr::knit_engines$set(python = reticulate::eng_python)  
+knitr_fig_path("02-")
 ~~~
 {: .language-r}
 
