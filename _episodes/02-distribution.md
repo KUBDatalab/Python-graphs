@@ -50,6 +50,7 @@ And plot it. It might look like this:
 
 ```r
 library(reticulate)
+knitr::knit_engines$set(python = reticulate::eng_python)  
 ```
 
 
