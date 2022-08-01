@@ -18,6 +18,7 @@ source("../bin/chunk-options.R")
 knitr_fig_path("02-")
 library(tidyverse)
 library(palmerpenguins)
+
 ```
 
 We have some data on the mass of penguins. We expect some penguins to weigh 
@@ -37,9 +38,7 @@ or bins, of weight, eg one bin with 3300 to 3400 grams, and the next bin from
 3400 to 3500 grams. Then we count how many penguins are in a specific bin. 
 And plot it. It might look like this:
 ```{r histogram, echo=F}
-penguins %>% 
-  ggplot(aes(body_mass_g)) + 
-  geom_histogram()
+
 ```
 
 
@@ -90,27 +89,10 @@ is to make things easier to understand.
 
 ### how do we make them?
 
-The geom_ we are using here is geom_histogram(). It takes only one variable 
-in the mapping.
 
 ```{r}
-# library
-library(ggplot2)
-library(palmerpenguins)
 
-# dataset:
-data <-  penguins
-
-# basic histogram
-ggplot(data, aes(x=body_mass_g)) + 
-  geom_histogram()
 ```
-Built into the geom_histogram is the statistical transformation, that counts the 
-number of observations in each bin.
-
-Note the warning that this statistical transformation as default uses bins = 30.
-This is the default number of bins. And it is almost quaranteed that it is not
-the best number of bins.
 
 Bins can be determined in two ways, either by providing a number of bins:
 *geom_histogram(bins = 30)* 
@@ -122,10 +104,7 @@ or by specifying the width of the bins:
 
 #### more than one on same axis
 ```{r}
-penguins %>%
-  filter(!is.na(sex)) %>% 
-  ggplot( aes(x=body_mass_g, fill=sex)) +
-  geom_histogram(alpha = 0.6, position = "identity")
+
 ```
 
 Note that we do not map sex to color, but rather to fill. Color is the 
@@ -137,11 +116,6 @@ bars.
 Or mirrored histogram.
 
 det skal vist gøres lidt mere læseligt...
-```{r}
-ggplot() +
-  geom_histogram(aes(x = penguins %>% filter(sex == "female") %>% pull(body_mass_g), y = ..density.. ), fill="#69b3a2" ) +
-  geom_histogram(aes(x = penguins %>% filter(sex == "male") %>% pull(body_mass_g), y = -..density.. ), fill= "#404080")
-```
 
 
 #### Grid
@@ -154,41 +128,6 @@ ggplot() +
 The number of bins (or their width, they are equivalent) can lead to very
 different conclusions. Try several sizes.
 ```{r echo = F}
-library(ggplot2)
-library(tidyverse)
-library(palmerpenguins)
-library(cowplot)
-
-
-
-# dataset:
-data <-  penguins
-bins <- c(15,30,45, 60)
-# basic histogram
-ggplot(data, aes(x=body_mass_g)) + 
-  geom_histogram()
-
-p1 <- ggplot(data, aes(x=body_mass_g)) + 
-  geom_histogram(bins = bins[1]) +
-  ggtitle(paste0("Bin number = ", bins[1]))
-
-
-p2 <- ggplot(data, aes(x=body_mass_g)) + 
-  geom_histogram(bins = bins[2]) +
-  ggtitle(paste0("Bin number = ", bins[2]))
-
-
-p3 <- ggplot(data, aes(x=body_mass_g)) + 
-  geom_histogram(bins = bins[3]) +
-  ggtitle(paste0("Bin number = ", bins[3]))
-
-p4 <- ggplot(data, aes(x=body_mass_g)) + 
-  geom_histogram(bins = bins[4]) +
-  ggtitle(paste0("Bin number = ", bins[4]))
-
-
-
-cowplot::plot_grid(p1, p2, p3, p4)
 
 ```
 
@@ -229,16 +168,12 @@ Typically we show more than one boxplot, but a collection of boxplots.
 ### how do we make them?
 
 ```{r}
-penguins %>% 
-  ggplot(aes(x = body_mass_g)) + 
-  geom_boxplot()
+
 ```
 
 Typically we want to compare the weight of different groups of penguins:
 ```{r}
-penguins %>% 
-  ggplot(aes(y = species, x = body_mass_g)) + 
-  geom_boxplot()
+
 ```
 Gentoo penguins are generally heavier than Chinstrap and Adelie penguins. But
 some Chinstraps and Adelies are as heavy as Gentoos. Remember that this overlap
@@ -253,10 +188,7 @@ geom_point. Points might overlap in a way that makes it impossible to see if a
 point represents 1 or 50 penguins. geom_jitter adds small amounts of noise to 
 the points.
 ```{r}
-penguins %>% 
-  ggplot(aes(y = species, x = body_mass_g)) + 
-  geom_boxplot() +
-  geom_jitter()
+
 ```
 
 
