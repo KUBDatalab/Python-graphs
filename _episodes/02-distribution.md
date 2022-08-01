@@ -47,21 +47,6 @@ knitr::knit_engines$set(python = reticulate::eng_python)
 
 
 
-~~~
-from matplotlib import pyplot as plot
-import numpy as np
-~~~
-{: .language-python}
-
-noget
-
-~~~
-# Creating dataset
-np.random.seed(42)
-x = np.random.normal(size=1000)
-~~~
-{: .language-python}
-
 Creating histogram
 
 ~~~
@@ -97,9 +82,12 @@ plt.hist(x, density=True, bins=30)  # density=False would make counts
 
 ~~~
 plt.ylabel('Probability')
-plt.xlabel('Data');
+plt.xlabel('Data')
+plt.show()
 ~~~
 {: .language-python}
+
+<img src="fig/rmd-02-third-1.png" title="plot of chunk third" alt="plot of chunk third" style="display: block; margin: auto;" />
 
 
 

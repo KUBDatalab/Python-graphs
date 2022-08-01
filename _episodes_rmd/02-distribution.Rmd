@@ -50,17 +50,6 @@ knitr::knit_engines$set(python = reticulate::eng_python)
 ```
 
 
-```{python first}
-from matplotlib import pyplot as plot
-import numpy as np
-```
-
-noget
-```{python second}
-# Creating dataset
-np.random.seed(42)
-x = np.random.normal(size=1000)
-```
 
 Creating histogram
 ```{python third}
@@ -72,7 +61,8 @@ x = np.random.normal(size=1000)
 
 plt.hist(x, density=True, bins=30)  # density=False would make counts
 plt.ylabel('Probability')
-plt.xlabel('Data');
+plt.xlabel('Data')
+plt.show()
 ```
 
 
