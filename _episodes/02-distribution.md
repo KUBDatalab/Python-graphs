@@ -34,61 +34,89 @@ or bins, of weight, eg one bin with 3300 to 3400 grams, and the next bin from
 3400 to 3500 grams. Then we count how many penguins are in a specific bin. 
 And plot it. It might look like this:
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
+~~~
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+~~~
+{: .output}
 
-```
-## Warning: Removed 2 rows containing non-finite values (stat_bin).
-```
 
-![plot of chunk histogram](figure/histogram-1.png)
+
+~~~
+Warning: Removed 2 rows containing non-finite values (stat_bin).
+~~~
+{: .warning}
+
+<img src="../fig/rmd-02-histogram-1.png" title="plot of chunk histogram" alt="plot of chunk histogram" width="612" style="display: block; margin: auto;" />
 
 
 ### Python test
 
 
-```r
+~~~
 library(reticulate)
 knitr::knit_engines$set(python = reticulate::eng_python)  
-```
+~~~
+{: .language-r}
 
 
 
-```python
+~~~
 from matplotlib import pyplot as plt
 import numpy as np
-```
+~~~
+{: .language-python}
 
 noget
 
-```python
+~~~
 # Creating dataset
 a = np.array([22, 87, 5, 43, 56,
               73, 55, 54, 11,
               20, 51, 5, 79, 31,
               27])
-```
+~~~
+{: .language-python}
 
 
 
-```python
+~~~
 # Creating histogram
 fig, ax = plt.subplots(figsize =(10, 7))
 ax.hist(a, bins = [0, 25, 50, 75, 100])
  
 # Show plot
-```
+~~~
+{: .language-python}
 
-```
-## (array([5., 3., 5., 2.]), array([  0,  25,  50,  75, 100]), <BarContainer object of 4 artists>)
-```
 
-```python
+
+~~~
+(array([5., 3., 5., 2.]), array([  0,  25,  50,  75, 100]), <BarContainer object of 4 artists>)
+~~~
+{: .output}
+
+
+
+~~~
+plot.imshow(fig)
+~~~
+{: .language-python}
+
+
+
+~~~
+Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plot' is not defined
+~~~
+{: .error}
+
+
+
+~~~
 plt.show()
-```
+~~~
+{: .language-python}
 
-![plot of chunk third](figure/third-1.png)
+<img src="fig/rmd-02-third-1.png" title="plot of chunk third" alt="plot of chunk third" style="display: block; margin: auto;" />
 
 
 ### What do we use them for?
@@ -107,7 +135,7 @@ The geom_ we are using here is geom_histogram(). It takes only one variable
 in the mapping.
 
 
-```r
+~~~
 # library
 library(ggplot2)
 library(palmerpenguins)
@@ -118,17 +146,24 @@ data <-  penguins
 # basic histogram
 ggplot(data, aes(x=body_mass_g)) + 
   geom_histogram()
-```
+~~~
+{: .language-r}
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
 
-```
-## Warning: Removed 2 rows containing non-finite values (stat_bin).
-```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-3.png)
+~~~
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+~~~
+{: .output}
+
+
+
+~~~
+Warning: Removed 2 rows containing non-finite values (stat_bin).
+~~~
+{: .warning}
+
+<img src="../fig/rmd-02-unnamed-chunk-3-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="612" style="display: block; margin: auto;" />
 Built into the geom_histogram is the statistical transformation, that counts the 
 number of observations in each bin.
 
@@ -146,18 +181,22 @@ or by specifying the width of the bins:
 
 #### more than one on same axis
 
-```r
+~~~
 penguins %>%
   filter(!is.na(sex)) %>% 
   ggplot( aes(x=body_mass_g, fill=sex)) +
   geom_histogram(alpha = 0.6, position = "identity")
-```
+~~~
+{: .language-r}
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+
+~~~
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+~~~
+{: .output}
+
+<img src="../fig/rmd-02-unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="612" style="display: block; margin: auto;" />
 
 Note that we do not map sex to color, but rather to fill. Color is the 
 color of the outline of the individual bars, fill the inside of the 
@@ -169,18 +208,22 @@ Or mirrored histogram.
 
 det skal vist gøres lidt mere læseligt...
 
-```r
+~~~
 ggplot() +
   geom_histogram(aes(x = penguins %>% filter(sex == "female") %>% pull(body_mass_g), y = ..density.. ), fill="#69b3a2" ) +
   geom_histogram(aes(x = penguins %>% filter(sex == "male") %>% pull(body_mass_g), y = -..density.. ), fill= "#404080")
-```
+~~~
+{: .language-r}
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+
+~~~
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+~~~
+{: .output}
+
+<img src="../fig/rmd-02-unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="612" style="display: block; margin: auto;" />
 
 
 #### Grid
@@ -193,24 +236,29 @@ ggplot() +
 The number of bins (or their width, they are equivalent) can lead to very
 different conclusions. Try several sizes.
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
+~~~
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+~~~
+{: .output}
 
-```
-## Warning: Removed 2 rows containing non-finite values (stat_bin).
-```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
 
-```
-## Warning: Removed 2 rows containing non-finite values (stat_bin).
-## Removed 2 rows containing non-finite values (stat_bin).
-## Removed 2 rows containing non-finite values (stat_bin).
-## Removed 2 rows containing non-finite values (stat_bin).
-```
+~~~
+Warning: Removed 2 rows containing non-finite values (stat_bin).
+~~~
+{: .warning}
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-2.png)
+<img src="../fig/rmd-02-unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="612" style="display: block; margin: auto;" />
+
+~~~
+Warning: Removed 2 rows containing non-finite values (stat_bin).
+Removed 2 rows containing non-finite values (stat_bin).
+Removed 2 rows containing non-finite values (stat_bin).
+Removed 2 rows containing non-finite values (stat_bin).
+~~~
+{: .warning}
+
+<img src="../fig/rmd-02-unnamed-chunk-6-2.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="612" style="display: block; margin: auto;" />
 
 
 * Weird and complicated color schemes does not add insight. Avoid them.
@@ -249,31 +297,39 @@ Typically we show more than one boxplot, but a collection of boxplots.
 ### how do we make them?
 
 
-```r
+~~~
 penguins %>% 
   ggplot(aes(x = body_mass_g)) + 
   geom_boxplot()
-```
+~~~
+{: .language-r}
 
-```
-## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
-```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
+
+~~~
+Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+~~~
+{: .warning}
+
+<img src="../fig/rmd-02-unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="612" style="display: block; margin: auto;" />
 
 Typically we want to compare the weight of different groups of penguins:
 
-```r
+~~~
 penguins %>% 
   ggplot(aes(y = species, x = body_mass_g)) + 
   geom_boxplot()
-```
+~~~
+{: .language-r}
 
-```
-## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
-```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
+
+~~~
+Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+~~~
+{: .warning}
+
+<img src="../fig/rmd-02-unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="612" style="display: block; margin: auto;" />
 Gentoo penguins are generally heavier than Chinstrap and Adelie penguins. But
 some Chinstraps and Adelies are as heavy as Gentoos. Remember that this overlap
 does not mean that we can not conclude that Gentoos are not larger that the two
@@ -287,22 +343,29 @@ geom_point. Points might overlap in a way that makes it impossible to see if a
 point represents 1 or 50 penguins. geom_jitter adds small amounts of noise to 
 the points.
 
-```r
+~~~
 penguins %>% 
   ggplot(aes(y = species, x = body_mass_g)) + 
   geom_boxplot() +
   geom_jitter()
-```
+~~~
+{: .language-r}
 
-```
-## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
-```
 
-```
-## Warning: Removed 2 rows containing missing values (geom_point).
-```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
+~~~
+Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+~~~
+{: .warning}
+
+
+
+~~~
+Warning: Removed 2 rows containing missing values (geom_point).
+~~~
+{: .warning}
+
+<img src="../fig/rmd-02-unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="612" style="display: block; margin: auto;" />
 
 
 ### Think about
