@@ -55,8 +55,62 @@ library(reticulate)
 
 
 ```python
+from matplotlib import pyplot as plt
+```
 
-x = [1, 2, 3]
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'matplotlib'
+```
+
+```python
+import numpy as np
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'numpy'
+```
+
+noget
+
+```python
+# Creating dataset
+a = np.array([22, 87, 5, 43, 56,
+              73, 55, 54, 11,
+              20, 51, 5, 79, 31,
+              27])
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'np' is not defined
+```
+
+
+
+```python
+# Creating histogram
+fig, ax = plt.subplots(figsize =(10, 7))
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
+```
+
+```python
+ax.hist(a, bins = [0, 25, 50, 75, 100])
+ 
+# Show plot
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'ax' is not defined
+```
+
+```python
+plt.show()
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
 ```
 
 
@@ -97,7 +151,7 @@ ggplot(data, aes(x=body_mass_g)) +
 ## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
 Built into the geom_histogram is the statistical transformation, that counts the 
 number of observations in each bin.
 
@@ -126,7 +180,7 @@ penguins %>%
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
 
 Note that we do not map sex to color, but rather to fill. Color is the 
 color of the outline of the individual bars, fill the inside of the 
@@ -149,7 +203,7 @@ ggplot() +
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
 
 
 #### Grid
@@ -170,7 +224,7 @@ different conclusions. Try several sizes.
 ## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
 
 ```
 ## Warning: Removed 2 rows containing non-finite values (stat_bin).
@@ -179,7 +233,7 @@ different conclusions. Try several sizes.
 ## Removed 2 rows containing non-finite values (stat_bin).
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-2.png)
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-2.png)
 
 
 * Weird and complicated color schemes does not add insight. Avoid them.
@@ -228,7 +282,7 @@ penguins %>%
 ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
 
 Typically we want to compare the weight of different groups of penguins:
 
@@ -242,7 +296,7 @@ penguins %>%
 ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
 Gentoo penguins are generally heavier than Chinstrap and Adelie penguins. But
 some Chinstraps and Adelies are as heavy as Gentoos. Remember that this overlap
 does not mean that we can not conclude that Gentoos are not larger that the two
@@ -271,7 +325,7 @@ penguins %>%
 ## Warning: Removed 2 rows containing missing values (geom_point).
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png)
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
 
 
 ### Think about

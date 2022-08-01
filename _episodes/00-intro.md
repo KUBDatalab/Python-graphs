@@ -19,6 +19,8 @@ source: Rmd
 
 ## What is this?
 
+DET HER ER SÅ PYTHON-UDGAVEN!
+
 This is not really a course. It is a collection of graphs and plots, that we 
 would like to keep handy, in order to pick and choose when we get questions
 or when running workshops on visualisations.
