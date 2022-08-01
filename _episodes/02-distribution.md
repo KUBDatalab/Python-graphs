@@ -36,6 +36,16 @@ And plot it. It might look like this:
 
 
 
+~~~
+library(tidyverse)
+mtcars %>% ggplot(aes(cyl,mpg)) + 
+  geom_point()
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="612" style="display: block; margin: auto;" />
+
+
 ### Python test
 
 

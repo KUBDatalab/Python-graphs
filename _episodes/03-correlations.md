@@ -22,6 +22,10 @@ source: Rmd
 If one variable goes up, what happens to the other variable? How are they
 correlated?
 
+
+
+
+
 ## Scatterplots
 Shows the relation between two numeric variables. Each dot represents one 
 observation. The position of the dot on the X-axis (horisontal, AKA abscissa), 

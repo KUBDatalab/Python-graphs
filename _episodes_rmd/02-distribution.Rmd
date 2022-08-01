@@ -41,6 +41,12 @@ And plot it. It might look like this:
 
 ```
 
+```{r}
+library(tidyverse)
+mtcars %>% ggplot(aes(cyl,mpg)) + 
+  geom_point()
+```
+
 
 ### Python test
 
