@@ -36,6 +36,7 @@ jobs:
           python3 -m pip install --upgrade pip setuptools wheel pyyaml==5.3.1 requests
           python3 -m pip install --upgrade pip numpy
           python3 -m pip install --upgrade pip matplotlib
+          python3 -m pip install --upgrade pip pandas
 
       - name: Checkout the lesson
         uses: actions/checkout@master
