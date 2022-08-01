@@ -51,29 +51,30 @@ knitr::knit_engines$set(python = reticulate::eng_python)
 
 
 ```{python first}
-from matplotlib import pyplot as plt
+from matplotlib import pyplot as plot
 import numpy as np
 ```
 
 noget
 ```{python second}
 # Creating dataset
-a = np.array([22, 87, 5, 43, 56,
-              73, 55, 54, 11,
-              20, 51, 5, 79, 31,
-              27])
+np.random.seed(42)
+x = np.random.normal(size=1000)
 ```
 
 Creating histogram
 ```{python third}
-fig, ax = plt.subplots(figsize =(10, 7))
-ax.hist(a, bins = [0, 25, 50, 75, 100])
- 
-# Show plot
-fig.imshow()
-fig.show()
+import matplotlib.pyplot as plt
+import numpy as np
 
+np.random.seed(42)
+x = np.random.normal(size=1000)
+
+plt.hist(x, density=True, bins=30)  # density=False would make counts
+plt.ylabel('Probability')
+plt.xlabel('Data');
 ```
+
 
 
 ### What do we use them for?

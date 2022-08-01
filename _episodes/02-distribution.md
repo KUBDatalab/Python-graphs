@@ -48,7 +48,7 @@ knitr::knit_engines$set(python = reticulate::eng_python)
 
 
 ~~~
-from matplotlib import pyplot as plt
+from matplotlib import pyplot as plot
 import numpy as np
 ~~~
 {: .language-python}
@@ -57,50 +57,50 @@ noget
 
 ~~~
 # Creating dataset
-a = np.array([22, 87, 5, 43, 56,
-              73, 55, 54, 11,
-              20, 51, 5, 79, 31,
-              27])
+np.random.seed(42)
+x = np.random.normal(size=1000)
 ~~~
 {: .language-python}
 
 Creating histogram
 
 ~~~
-fig, ax = plt.subplots(figsize =(10, 7))
-ax.hist(a, bins = [0, 25, 50, 75, 100])
- 
-# Show plot
+import matplotlib.pyplot as plt
+import numpy as np
+
+np.random.seed(42)
+x = np.random.normal(size=1000)
+
+plt.hist(x, density=True, bins=30)  # density=False would make counts
 ~~~
 {: .language-python}
 
 
 
 ~~~
-(array([5., 3., 5., 2.]), array([  0,  25,  50,  75, 100]), <BarContainer object of 4 artists>)
+(array([0.00422893, 0.        , 0.01268678, 0.01268678, 0.02537356,
+       0.05497605, 0.0803496 , 0.15647028, 0.16915706, 0.23259096,
+       0.31716949, 0.4144348 , 0.32139842, 0.3975191 , 0.43135051,
+       0.36368768, 0.35522983, 0.23681989, 0.19030169, 0.13109672,
+       0.11840994, 0.09726531, 0.05074712, 0.01268678, 0.02960249,
+       0.00422893, 0.00422893, 0.        , 0.        , 0.00422893]), array([-3.24126734, -3.00480071, -2.76833408, -2.53186746, -2.29540083,
+       -2.0589342 , -1.82246757, -1.58600095, -1.34953432, -1.11306769,
+       -0.87660106, -0.64013444, -0.40366781, -0.16720118,  0.06926545,
+        0.30573208,  0.5421987 ,  0.77866533,  1.01513196,  1.25159859,
+        1.48806521,  1.72453184,  1.96099847,  2.1974651 ,  2.43393172,
+        2.67039835,  2.90686498,  3.14333161,  3.37979824,  3.61626486,
+        3.85273149]), <BarContainer object of 30 artists>)
 ~~~
 {: .output}
 
 
 
 ~~~
-fig.imshow()
+plt.ylabel('Probability')
+plt.xlabel('Data');
 ~~~
 {: .language-python}
 
-
-
-~~~
-Error in py_call_impl(callable, dots$args, dots$keywords): AttributeError: 'Figure' object has no attribute 'imshow'
-~~~
-{: .error}
-
-
-
-~~~
-fig.show()
-~~~
-{: .language-python}
 
 
 ### What do we use them for?
