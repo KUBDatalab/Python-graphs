@@ -98,7 +98,7 @@ plt.show()
 ~~~
 {: .language-python}
 
-<img src="fig/rmd-02-third-1.png" title="plot of chunk third" alt="plot of chunk third" style="display: block; margin: auto;" />
+<img src="fig/rmd-third-1.png" title="plot of chunk third" alt="plot of chunk third" style="display: block; margin: auto;" />
 
 
 

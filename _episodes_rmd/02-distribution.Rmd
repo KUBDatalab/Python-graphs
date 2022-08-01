@@ -60,6 +60,7 @@ knitr_fig_path("02-")
 
 Creating histogram
 ```{python third}
+#| fig.path = "fig/rmd-"
 import matplotlib.pyplot as plt
 import numpy as np
 
