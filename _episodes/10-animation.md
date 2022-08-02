@@ -54,7 +54,7 @@ ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, color = continent)) +
 ~~~
 {: .language-r}
 
-<img src="fig/rmd-10-animation_test-1.gif" title="plot of chunk animation_test" alt="plot of chunk animation_test" style="display: block; margin: auto;" />
+<img src="fig/rrmd-10-animation_test-1.gif" title="plot of chunk animation_test" alt="plot of chunk animation_test" style="display: block; margin: auto;" />
 
 Hvad hvis vi deler den op?
 
