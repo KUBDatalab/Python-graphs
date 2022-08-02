@@ -15,7 +15,7 @@ source: Rmd
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
-
+knitr_fig_path("02-")
 library(tidyverse)
 library(palmerpenguins)
 
@@ -41,11 +41,7 @@ And plot it. It might look like this:
 
 ```
 
-```{r}
-library(tidyverse)
-mtcars %>% ggplot(aes(cyl,mpg)) + 
-  geom_point()
-```
+
 
 
 ### Python test
@@ -53,14 +49,14 @@ mtcars %>% ggplot(aes(cyl,mpg)) +
 ```{r}
 library(reticulate)
 knitr::knit_engines$set(python = reticulate::eng_python)  
-knitr_fig_path("02-")
+
 ```
 
 
-
+#| fig.path = "/fig/rmd-"
 Creating histogram
 ```{python third}
-#| fig.path = "fig/rmd-"
+
 import matplotlib.pyplot as plt
 import numpy as np
 
