@@ -36,14 +36,6 @@ And plot it. It might look like this:
 
 
 
-~~~
-library(tidyverse)
-mtcars %>% ggplot(aes(cyl,mpg)) + 
-  geom_point()
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="612" style="display: block; margin: auto;" />
 
 
 ### Python test
@@ -52,15 +44,15 @@ mtcars %>% ggplot(aes(cyl,mpg)) +
 ~~~
 library(reticulate)
 knitr::knit_engines$set(python = reticulate::eng_python)  
-knitr_fig_path("02-")
 ~~~
 {: .language-r}
 
 
-
+#| fig.path = "/fig/rmd-"
 Creating histogram
 
 ~~~
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -98,7 +90,7 @@ plt.show()
 ~~~
 {: .language-python}
 
-<img src="fig/rmd-third-1.png" title="plot of chunk third" alt="plot of chunk third" style="display: block; margin: auto;" />
+<img src="fig/rmd-02-third-1.png" title="plot of chunk third" alt="plot of chunk third" style="display: block; margin: auto;" />
 
 
 
