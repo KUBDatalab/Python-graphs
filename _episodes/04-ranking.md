@@ -56,7 +56,20 @@ bar <- groups_long %>%
            aes(fill = group)) + 
   stat_summary(geom = "errorbar", fun.data = "mean_se",
                width = 0.1, size = 1) 
+~~~
+{: .language-r}
 
+
+
+~~~
+Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+~~~
+{: .warning}
+
+
+
+~~~
 dotplot <- groups_long %>% 
   ggplot(aes(x = group, y = response)) +
   ggbeeswarm::geom_quasirandom(
